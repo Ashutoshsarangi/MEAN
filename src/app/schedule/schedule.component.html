@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="col-md-6 offset-md-3" style="text-align: center;">
+        <h3>Create Schedule </h3>
+    </div>
+    <div class="clearFix"></div>
+    <form #scheduleForm="ngForm">
+        <div class="row">
+            <div class="col s6" [class.has-error]="docNameTemplateVariable.invalid && docNameTemplateVariable.touched" [class.has-success]="docNameTemplateVariable.valid">
+                <label for="docName" class="control-label">Doctor Name</label>
+                <input type="text" class="form-control" name="docName" placeholder="Doctor Name" [(ngModel)]="scheduleData.docName" required #docNameTemplateVariable="ngModel">
+                <span class="help-block" *ngIf="docNameTemplateVariable.invalid && docNameTemplateVariable.touched">Doctor Name is required</span>
+            </div>
+            <div class="col s6" [class.has-error]="appointmentDateTimeTemplateVariable.invalid && appointmentDateTimeTemplateVariable.touched" [class.has-success]="appointmentDateTimeTemplateVariable.valid">
+                <label for="appointmentDateTime" class="control-label">Apointment Date</label>
+                <input type="date" class="form-control" name="appointmentDateTime" placeholder="Apointment Date and Time" [(ngModel)]="scheduleData.apointmentDateTime" required #appointmentDateTimeTemplateVariable="ngModel">
+                <span class="help-block" *ngIf="appointmentDateTimeTemplateVariable.invalid && appointmentDateTimeTemplateVariable.touched">Apointment date is required</span>
+            </div>
+        </div>
+        <div class="clearFix"></div>
+        <div class="row">
+            <div class="col s6">
+                <label for="doctype" class="control-label">Doctor Type</label>
+                <select class="form-control" [(ngModel)]="scheduleData.docType" name="doctype">
+                    <option value="NA">Doctor Type</option>
+                    <option>General</option>
+                    <option>ENT</option>
+                    <option>Cardio</option>
+                    <option>Lungs</option>
+                    <option>Teeth</option>
+                </select>
+            </div>
+            <div class="col s6" [class.has-error]="doccityTemplateVariable.invalid && doccityTemplateVariable.touched" [class.has-success]="doccityTemplateVariable.valid">
+                <label for="doccity" class="control-label">City</label>
+                <input type="text" class="form-control" placeholder="City" [(ngModel)]="scheduleData.city" name="doccity" required #doccityTemplateVariable="ngModel">
+                <span class="help-block" *ngIf="doccityTemplateVariable.invalid && doccityTemplateVariable.touched">City is required</span>
+            </div>
+        </div>
+        <div class="clearFix"></div>
+        <div class="row">
+            <div class="col s6">
+                <label for="docaddress" class="control-label">Address</label>
+                <textarea class="form-control" rows="3" placeholder="Enter Address" [(ngModel)]="scheduleData.address" name="docaddress"></textarea>
+            </div>
+            <div class="col s6">
+                <label for="docreport" class="control-label">Doctor Report</label>
+                <input type="file" class="form-control-file" [(ngModel)]="scheduleData.docFile" name="docreport">
+            </div>
+        </div>
+        <div class="clearFix"></div>
+        <div class="row">
+            <div class="col s12" style="text-align:center">
+                <button class="btn btn-success" (click)="addRow(scheduleData)" [disabled]="scheduleForm.invalid">{{btnText}}</button>
+            </div>
+        </div>
+        <div class="clearFix"></div>
+    </form>
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Apointment Date and Time</th>
+            <th scope="col">Doctor Type</th>
+            <th scope="col">City</th>
+            <th scope="col">Address</th>
+            <th scope="col">Document</th>
+            <th scope="col">Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let info of scheduleInfos | paginate: { itemsPerPage: numberOfItems, currentPage: p }; index as i ">
+            <th scope="row">{{i+1}}</th>
+            <td>{{info.docName}}</td>
+            <td>{{info.apointmentDateTime}}</td>
+            <td>{{info.docType}}</td>
+            <td>{{info.city}}</td>
+            <td>{{info.address}}</td>
+            <td>{{info.docFile || "NA"}}</td>
+            <td><i class="fas fa-edit" style="color: #04b904;" (click)="editRow(info)"></i>  <i class="fas fa-trash-alt" style="color: red;margin-left: 10px;" (click)="deletScheduleRow(info)"></i></td>
+          </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event" style="text-align: right;"></pagination-controls>
+    <ngx-spinner bdColor = "rgba(51, 51, 51, 0.8)" size = "large" color = "#fff" type = "timer"></ngx-spinner>
+</div>

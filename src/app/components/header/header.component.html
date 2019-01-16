@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #3f51b5;">
+  <a class="navbar-brand headerbigText" routerLink="/dashboard">E-Pharma</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link headerText" routerLink="/schedule">Schedule</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link headerText" routerLink="/products">Product</a>
+      </li>
+      <li class="nav-item dropdown logout" *ngIf="false">
+        <a class="nav-link dropdown-toggle headerText" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="i-circle">A</span> ashutoshsarangi95@gmail.com
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" >Log out</a>
+        </div>
+      </li>
+      <li class="nav-item logout" *ngIf="true" style="cursor: pointer;">
+        <a class="nav-link headerText" data-toggle="modal" data-target="#exampleModalCenter">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<app-login></app-login>

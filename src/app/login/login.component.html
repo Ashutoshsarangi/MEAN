@@ -1,0 +1,63 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #loginForm="ngForm" *ngIf="flag">
+            <div class="form-group " [class.has-error]="unameController.invalid && unameController.touched" [class.has-success]="unameController.valid">
+                <label for="userName" class="control-label">Email id / Mobile No.</label>
+                <input type="text" class="form-control" name="userName" [(ngModel)]="userName" required #unameController="ngModel" placeholder="Enter Email id / Mobile No" />
+                <span class="help-block" *ngIf="unameController.invalid && unameController.touched">Full Email id / Mobile No is required</span>
+
+            </div>
+            <div class="form-group " [class.has-error]="loginPasswordController.invalid && loginPasswordController.touched" [class.has-success]="loginPasswordController.valid">
+                <label for="loginPassword" class="control-label">Password.</label>
+                <input type="password" class="form-control" name="loginPassword" [(ngModel)]="loginPassword" required #loginPasswordController="ngModel" placeholder="Enter Password" />
+                <span class="help-block" *ngIf="loginPasswordController.invalid && loginPasswordController.touched">Password is required</span>
+
+            </div>
+            <div class="form-group" style="text-align: center;">
+                <button class="btn btn-success" (click)="login('login',loginForm.valid)" [disabled]="loginForm.invalid" style="margin: 10px;">Log in</button>
+                <button class="btn btn-primary" (click)="register('login')" >Register</button>
+            </div>
+        </form>
+        <form #registerForm="ngForm" *ngIf="!flag">
+            <div class="form-group " [class.has-error]="unameController.invalid && unameController.touched" [class.has-success]="unameController.valid">
+                <label for="userName" class="control-label">Email id</label>
+                <input type="text" class="form-control" name="userName" [(ngModel)]="userName" required #unameController="ngModel" placeholder="Enter Email id" />
+                <span class="help-block" *ngIf="unameController.invalid && unameController.touched"> Email id is required</span>
+
+            </div>
+            <div class="form-group " [class.has-error]="unameController.invalid && unameController.touched" [class.has-success]="unameController.valid">
+                <label for="userName" class="control-label">Mobile number</label>
+                <input type="text" class="form-control" name="userName" [(ngModel)]="userName" required #unameController="ngModel" placeholder="Enter Mobile number" />
+                <span class="help-block" *ngIf="unameController.invalid && unameController.touched"> Mobile number is required</span>
+
+            </div>
+            <div class="form-group " [class.has-error]="loginPasswordController.invalid && loginPasswordController.touched" [class.has-success]="loginPasswordController.valid">
+                <label for="loginPassword" class="control-label">Password.</label>
+                <input type="password" class="form-control" name="loginPassword" [(ngModel)]="loginPassword" required #loginPasswordController="ngModel" placeholder="Enter Password" />
+                <span class="help-block" *ngIf="loginPasswordController.invalid && loginPasswordController.touched">Password is required</span>
+
+            </div>
+            <div class="form-group " [class.has-error]="loginPasswordController.invalid && loginPasswordController.touched" [class.has-success]="loginPasswordController.valid">
+                <label for="loginPassword" class="control-label">Confirm Password.</label>
+                <input type="password" class="form-control" name="loginPassword" [(ngModel)]="loginPassword" required #loginPasswordController="ngModel" placeholder="Enter Confirm Password" />
+                <span class="help-block" *ngIf="loginPasswordController.invalid && loginPasswordController.touched">Confirm is required</span>
+
+            </div>
+            <div class="form-group" style="text-align: center;">
+                <button class="btn btn-success" (click)="login('register')" style="margin: 10px;">Log in</button>
+                <button class="btn btn-primary" (click)="register('register',registerForm.valid)" [disabled]="registerForm.invalid">Register</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+.headerbigText{
+	font-size:  20px;
+	color: white;
+
+}
+.headerText{
+	font-size: 17px;
+	color: white !important;
+}
+.logout{
+	position: absolute;
+    right: 0;
+}
+.i-circle {
+    background: #19a25cd6;
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 89%;
+    font-size: 22px;
+}

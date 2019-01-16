@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.headerTxt{
+    color: white;
+    font-size: 17px;
+}
+.has-error{
+	color: red;
+}
+.has-error .control-label{
+	color: red;
+}
+.help-block{
+	color: red;
+}
+.has-success .control-label{
+	color: green;
+}
